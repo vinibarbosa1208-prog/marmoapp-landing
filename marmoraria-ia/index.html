@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MarmorarIA — A IA que vende para a sua marmoraria</title>
+<meta name="description" content="Agência de inteligência artificial só para marmorarias. O Antônio atende no WhatsApp, faz o pré-orçamento, retoma orçamentos parados e você vê o caixa de cada semana.">
+<meta property="og:title" content="MarmorarIA — A IA que vende para a sua marmoraria">
+<meta property="og:description" content="Diagnóstico gratuito: descubra quanto dinheiro está parado na sua marmoraria.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#131A2E">
+<link rel="icon" type="image/svg+xml" href="/marmoraria-ia/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap">
+<style>
+:root{--navy:#131A2E;--navy2:#1C2440;--gold:#D4AF5A;--gold-dark:#8A6B1F;--ivory:#F6F2E9;--sand:#E9E3D6;--ink2:#333A52;--muted:#4A5068;--muted-dark:#AEB6CA;--line:#D9D3C4}
+*{box-sizing:border-box}
+body{margin:0;font-family:'DM Sans',Arial,sans-serif;color:var(--navy);background:var(--ivory);line-height:1.5}
+h1,h2,h3{margin:0}
+.serif{font-family:'Playfair Display',Georgia,serif}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+a{color:inherit}
+.btn{display:inline-block;white-space:nowrap;text-decoration:none;font-weight:700;font-size:18px;padding:16px 28px;border-radius:999px;min-height:44px}
+.btn-gold{background:var(--gold);color:var(--navy)}
+.btn-gold:hover{background:#E0BE6E}
+.btn-ghost{border:1px solid var(--muted-dark);color:var(--ivory)}
+.btn-ghost:hover{border-color:var(--ivory)}
+.dark{background:var(--navy);color:var(--ivory)}
+.white{background:#FBF9F4}
+section{padding:88px 0}
+.eyebrow{font-size:15px;font-weight:700;letter-spacing:2px;text-transform:uppercase}
+.dark .eyebrow{color:var(--gold)}
+h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2rem,4vw,2.6rem);line-height:1.12}
+.grid{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.card{background:#fff;border-radius:20px;padding:30px}
+.dark .card{background:var(--navy2)}
+.muted{color:var(--ink2)}
+.dark .muted{color:#D5DAE6}
+header nav{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;padding:20px 24px;max-width:1200px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand span{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:26px}
+.brand b{color:var(--gold)}
+.links{display:flex;flex-wrap:wrap;align-items:center;gap:22px;font-size:16px}
+.links a{text-decoration:none;color:#D5DAE6}
+.links a:hover{color:#fff}
+.links .btn{color:var(--navy);font-size:16px;padding:12px 20px}
+.hero{display:flex;flex-wrap:wrap;gap:56px;align-items:center;padding:56px 24px 96px}
+.hero-text{flex:999 1 520px;min-width:0;display:flex;flex-direction:column;gap:26px}
+.hero h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2.4rem,6vw,3.8rem);line-height:1.05}
+.hero p{font-size:1.2rem;color:#D5DAE6;margin:0}
+.ctas{display:flex;flex-wrap:wrap;gap:14px}
+.chat{flex:1 1 340px;min-width:0;background:var(--sand);color:var(--navy);border-radius:24px;padding:22px;display:flex;flex-direction:column;gap:12px}
+.chat small{font-weight:700;color:var(--muted)}
+.msg{max-width:85%;padding:12px 16px;font-size:16px;line-height:1.4;border-radius:16px 16px 16px 4px;background:#fff}
+.msg.me{align-self:flex-end;max-width:80%;background:#D6F0C9;border-radius:16px 16px 4px 16px}
+.big{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:clamp(2.2rem,4vw,3rem);line-height:1.1}
+.step-n{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:2.2rem;color:var(--gold-dark)}
+.step h3{font-size:1.25rem;margin:6px 0}
+.step p{margin:0;color:var(--ink2)}
+.price{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:2rem}
+.price small{font-family:'DM Sans',Arial,sans-serif;font-size:1rem;font-weight:500}
+.card.feat{background:var(--navy);color:var(--ivory)}
+.card.feat .price{color:var(--gold)}
+.card.feat p{color:#D5DAE6}
+.card h3{font-size:1.35rem}
+.card p{margin:10px 0 0}
+.split{display:flex;flex-wrap:wrap;gap:48px;align-items:center}
+.split>*{min-width:0}
+.photo{flex:1 1 340px;height:320px;background:var(--line);border-radius:20px;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;font-weight:700;color:var(--muted)}
+.faq{max-width:860px}
+.faq details{border-top:1px solid var(--line);padding:18px 0}
+.faq summary{cursor:pointer;font-weight:700;font-size:1.12rem;min-height:44px;display:flex;align-items:center}
+.faq p{margin:8px 0 0;color:var(--ink2)}
+footer{border-top:1px solid #2E3753;margin-top:40px;padding-top:24px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:15px;color:var(--muted-dark)}
+.note{font-size:15px;color:var(--muted)}
+@media (max-width:640px){.links a:not(.btn){display:none}header nav{flex-wrap:nowrap}.links .btn{padding:10px 16px;font-size:15px}.brand span{font-size:22px}.hide-sm{display:none}.hero{padding-top:24px}}
+.dark .note{color:var(--muted-dark)}
+</style>
+</head>
+<body>
+
+<div class="dark">
+<header>
+<nav aria-label="Principal">
+<a class="brand" href="#topo" id="topo">
+<svg width="40" height="40" viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#D4AF5A"/><path d="M24 74 V32 L45 58 L66 32 V74" fill="none" stroke="#131A2E" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><path d="M80 13 L82.6 19.4 L89 22 L82.6 24.6 L80 31 L77.4 24.6 L71 22 L77.4 19.4 Z" fill="#131A2E"/></svg>
+<span>Marmorar<b>IA</b></span>
+</a>
+<div class="links">
+<a href="#como">Como funciona</a>
+<a href="#pacotes">Pacotes</a>
+<a href="#case">Case</a>
+<a class="btn btn-gold js-wa" href="#contato"><span class="hide-sm">Falar no </span>WhatsApp</a>
+</div>
+</nav>
+</header>
+
+<div class="wrap hero">
+<div class="hero-text">
+<span class="eyebrow">Agência de IA só para marmorarias</span>
+<h1>A IA que vende para a sua marmoraria.</h1>
+<p>A gente traz o cliente, o Antônio atende no WhatsApp e faz o pré-orçamento, os orçamentos parados voltam a andar e você vê o caixa de cada semana. Você só vai medir e fechar.</p>
+<div class="ctas">
+<a class="btn btn-gold js-wa" href="#contato">Quero o diagnóstico gratuito</a>
+<a class="btn btn-ghost" href="#como">Ver como funciona</a>
+</div>
+</div>
+<div class="chat" role="img" aria-label="Exemplo de conversa do Antônio com um cliente no WhatsApp">
+<small>WhatsApp · Antônio, assistente virtual</small>
+<div class="msg me">Boa noite, quanto fica uma pia de 2,5 m?</div>
+<div class="msg">Oi! Sou o Antônio, assistente virtual da marmoraria. Me manda uma foto do local e a profundidade da bancada?</div>
+<div class="msg me">[foto] 2,50 × 0,60. Queria Verde Ubatuba.</div>
+<div class="msg">Em Verde Ubatuba, com cuba e instalação, fica entre <b>R$ 2.000 e R$ 2.400</b>. O valor final sai na medição. Posso agendar para quinta às 10h?</div>
+</div>
+</div>
+</div>
+
+<main>
+<section>
+<div class="wrap" style="display:flex;flex-direction:column;gap:36px">
+<h2 style="max-width:760px">Tem dinheiro parado na sua marmoraria. A gente mostra quanto.</h2>
+<div class="grid">
+<div class="card"><div class="big">R$ 82 mil</div><p class="muted">em 27 orçamentos sem retorno há mais de 7 dias.</p></div>
+<div class="card"><div class="big">R$ 13 mil</div><p class="muted">em obras registradas sem nenhuma cobrança lançada.</p></div>
+<div class="card"><div class="big">R$ 136,8 mil</div><p class="muted">a receber, mapeados semana a semana até dezembro.</p></div>
+</div>
+<p class="note">Números de uma marmoraria em Arujá-SP, extraídos do sistema em 03/11/2026.</p>
+</div>
+</section>
+
+<section id="como" class="white">
+<div class="wrap" style="display:flex;flex-direction:column;gap:36px">
+<h2>Como funciona</h2>
+<div class="grid">
+<div class="step"><div class="step-n">1</div><h3>Diagnóstico gratuito</h3><p>Em até 7 dias, seus orçamentos e obras entram no sistema e você recebe o relatório: quanto está parado, o que não foi cobrado e como fica o caixa.</p></div>
+<div class="step"><div class="step-n">2</div><h3>Organização</h3><p>Pedras, serviços e preços cadastrados. Orçamento em minutos, obras e produção no mesmo lugar.</p></div>
+<div class="step"><div class="step-n">3</div><h3>O Antônio no seu WhatsApp</h3><p>Responde na hora, pede foto e medida, faz o pré-orçamento, marca a medição e retoma quem não respondeu.</p></div>
+<div class="step"><div class="step-n">4</div><h3>Cliente novo</h3><p>Anúncios na sua região, com verba regulada pela capacidade da sua produção. Uma marmoraria por cidade.</p></div>
+</div>
+</div>
+</section>
+
+<section id="pacotes">
+<div class="wrap" style="display:flex;flex-direction:column;gap:36px">
+<h2>Pacotes</h2>
+<div class="grid">
+<div class="card"><h3>Diagnóstico</h3><div class="price">Gratuito</div><p class="muted">Relatório de dinheiro parado, obras sem cobrança e caixa até o fim do ano.</p></div>
+<div class="card"><h3>Organiza</h3><div class="price">R$ 297<small>/mês</small></div><p class="muted">Sistema completo, implantação e treinamento da equipe. Implantação R$ 490.</p></div>
+<div class="card feat"><h3>Recupera</h3><div class="price">R$ 790<small>/mês</small></div><p>Organiza + Antônio no seu WhatsApp + follow-up automático + reativação de clientes. Implantação R$ 990.</p></div>
+<div class="card"><h3>Acelera</h3><div class="price">R$ 1.490<small>/mês</small></div><p class="muted">Recupera + anúncios na sua região + R$ 60 por medição realizada + exclusividade na cidade. Implantação R$ 1.990; verba de anúncio à parte.</p></div>
+</div>
+</div>
+</section>
+
+<section id="case" class="dark">
+<div class="wrap split">
+<div style="flex:1 1 440px;display:flex;flex-direction:column;gap:18px">
+<span class="eyebrow">Case · marmoraria em Arujá-SP</span>
+<h2>Três meses de sistema. O dono passou a ver o que antes ficava no caderno.</h2>
+<p class="muted" style="font-size:18px;margin:0">84 orçamentos e R$ 236 mil orçados passaram pelo sistema. Os orçamentos parados, as obras sem cobrança e o caixa até dezembro apareceram em um só painel.</p>
+</div>
+<div class="card" style="flex:1 1 380px">
+<p class="serif" style="font-size:1.5rem;line-height:1.4;margin:0">“Depoimento do dono da marmoraria em breve.”</p>
+</div>
+</div>
+</section>
+
+<section>
+<div class="wrap split">
+<div class="photo">Foto do pátio da marmoraria em breve</div>
+<div style="flex:999 1 480px;display:flex;flex-direction:column;gap:14px">
+<h2>Uma família no mármore desde 1972.</h2>
+<p class="muted" style="font-size:18px;margin:0">O Antônio trabalhou com mármore a vida inteira. O nosso assistente de IA leva o nome dele, e a MarmorarIA nasceu dentro de uma marmoraria de verdade, para resolver os problemas que a gente vive no pátio.</p>
+</div>
+</div>
+</section>
+
+<section class="white">
+<div class="wrap"><div class="faq">
+<h2 style="margin-bottom:20px">Perguntas frequentes</h2>
+<details><summary>O Antônio substitui meu vendedor?</summary><p>Não. Ele responde na hora, coleta foto e medida e marca a medição. Negociação e fechamento continuam com você.</p></details>
+<details><summary>O pré-orçamento pode dar errado?</summary><p>Ele sempre informa uma faixa, calculada com a sua tabela de pedras e serviços, e avisa que o valor final sai na medição.</p></details>
+<details><summary>Preciso trocar meu número de WhatsApp?</summary><p>Não. O Antônio é ligado ao número que a sua marmoraria já usa.</p></details>
+<details><summary>E se a produção não der conta?</summary><p>A verba de anúncio é regulada pela capacidade da sua equipe. Mais pedido do que você consegue entregar não ajuda ninguém.</p></details>
+<details><summary>Tem fidelidade?</summary><p>Três meses no Recupera e no Acelera. Depois, mês a mês.</p></details>
+</div></div>
+</section>
+</main>
+
+<div class="dark" id="contato">
+<section>
+<div class="wrap" style="display:flex;flex-direction:column;align-items:flex-start;gap:24px">
+<h2 style="max-width:760px;font-size:clamp(2rem,4.5vw,2.8rem)">Descubra quanto dinheiro está parado na sua marmoraria.</h2>
+<a class="btn btn-gold js-wa" href="#contato">Quero o diagnóstico gratuito</a>
+<footer style="width:100%">
+<span>MarmorarIA · sistema MarmoApp</span>
+<span>Arujá-SP</span>
+</footer>
+</div>
+</section>
+</div>
+
+<script>
+// Número do WhatsApp da MarmorarIA, só dígitos com DDI e DDD (ex.: 5511999999999).
+// Enquanto estiver vazio, os botões levam para a seção de contato.
+var WHATSAPP = "";
+(function () {
+  if (!WHATSAPP) return;
+  var params = new URLSearchParams(location.search);
+  var origem = ["utm_source", "utm_campaign", "utm_content"].map(function (k) { return params.get(k); }).filter(Boolean).join(" / ");
+  var texto = "Quero o diagnóstico da minha marmoraria" + (origem ? " (" + origem + ")" : "");
+  var link = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(texto);
+  document.querySelectorAll(".js-wa").forEach(function (a) { a.href = link; a.target = "_blank"; a.rel = "noopener"; });
+})();
+</script>
+</body>
+</html>
