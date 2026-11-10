@@ -166,7 +166,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 <a href="#processos">Processos</a>
 <a href="#pacotes">Pacotes</a>
 <a href="#faq">FAQ</a>
-<a class="btn btn-gold js-wa" href="#contato">Diagnóstico<span class="hide-sm"> grátis</span></a>
+<a class="btn btn-gold js-diag" href="/marmoraria-ia/diagnostico/">Diagnóstico<span class="hide-sm"> grátis</span></a>
 </div>
 </nav>
 </header>
@@ -177,7 +177,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 <h1>Sua marmoraria rodando com <em>inteligência artificial</em>, do orçamento à instalação</h1>
 <p class="sub">A MarmorarIA implanta processos e IA dentro da operação da sua marmoraria. O MarmoApp, nosso sistema, sustenta tudo no dia a dia. Você acompanha os resultados com a gente todo mês.</p>
 <div class="ctas">
-<a class="btn btn-gold js-wa" href="#contato">Quero o diagnóstico gratuito →</a>
+<a class="btn btn-gold js-diag" href="/marmoraria-ia/diagnostico/">Quero o diagnóstico gratuito →</a>
 <a class="btn btn-line" href="#como">Ver como trabalhamos</a>
 </div>
 <div class="stats" role="group" aria-label="Resultados de uma marmoraria em Arujá-SP">
@@ -355,7 +355,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A6D1F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Margem por pedido</li>
 <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A6D1F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Caixa até o fim do ano</li>
 </ul>
-<a class="btn btn-line js-wa" href="#contato">Quero o diagnóstico</a>
+<a class="btn btn-line js-diag" href="/marmoraria-ia/diagnostico/">Quero o diagnóstico</a>
 </div>
 <div class="plan">
 <h3>Gestão com IA</h3><p class="sub">Sistema implantado</p>
@@ -380,7 +380,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A6D1F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Antônio no WhatsApp e follow-up</li>
 <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A6D1F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Reunião mensal de indicadores</li>
 </ul>
-<a class="btn btn-gold js-wa" href="#contato">Começar pelo diagnóstico</a>
+<a class="btn btn-gold js-diag" href="/marmoraria-ia/diagnostico/">Começar pelo diagnóstico</a>
 </div>
 <div class="plan">
 <h3>Operação + Crescimento</h3><p class="sub">Com anúncios na região</p>
@@ -420,7 +420,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 <div class="wrap">
 <h2>Sua marmoraria merece uma operação à altura do que ela entrega</h2>
 <p>Comece pelo diagnóstico gratuito da operação. Sem compromisso.</p>
-<a class="btn btn-gold js-wa" href="#contato">Quero o diagnóstico gratuito →</a>
+<a class="btn btn-gold js-diag" href="/marmoraria-ia/diagnostico/">Quero o diagnóstico gratuito →</a>
 </div>
 </section>
 </div>
@@ -441,6 +441,8 @@ var WHATSAPP = "5511947340955";
   var texto = "Quero o diagnóstico da operação da minha marmoraria" + (origem ? " (" + origem + ")" : "");
   var link = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(texto);
   document.querySelectorAll(".js-wa").forEach(function (a) { a.href = link; a.target = "_blank"; a.rel = "noopener"; });
+  // Botões de diagnóstico levam ao formulário de 1 minuto, mantendo as UTMs do anúncio.
+  document.querySelectorAll(".js-diag").forEach(function (a) { a.href = "/marmoraria-ia/diagnostico/" + location.search; });
 })();
 </script>
 </body>
