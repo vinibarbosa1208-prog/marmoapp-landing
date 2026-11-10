@@ -3,224 +3,442 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MarmorarIA — Sua marmoraria rodando com IA, do orçamento à instalação</title>
-<meta name="description" content="Agência de tecnologia que implanta inteligência artificial na operação da marmoraria: orçamento, produção, estoque, financeiro e atendimento, com acompanhamento mensal de resultados.">
-<meta property="og:title" content="MarmorarIA — Sua marmoraria rodando com IA">
-<meta property="og:description" content="Diagnóstico gratuito da operação da sua marmoraria: orçamentos, produção, margem e caixa.">
+<title>MarmorarIA — Agência de IA para marmorarias</title>
+<meta name="description" content="Agência de tecnologia que implanta processos e inteligência artificial na operação da marmoraria, com o sistema MarmoApp sustentando o dia a dia. Diagnóstico gratuito.">
+<meta property="og:title" content="MarmorarIA — Sua marmoraria rodando com inteligência artificial">
+<meta property="og:description" content="A agência implanta, o sistema sustenta. Diagnóstico gratuito da operação da sua marmoraria.">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#131A2E">
+<meta name="theme-color" content="#FBF9F4">
 <link rel="icon" type="image/svg+xml" href="/marmoraria-ia/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&display=swap">
 <style>
-:root{--navy:#131A2E;--navy2:#1C2440;--gold:#D4AF5A;--gold-dark:#8A6B1F;--ivory:#F6F2E9;--sand:#E9E3D6;--ink2:#333A52;--muted:#4A5068;--muted-dark:#AEB6CA;--line:#D9D3C4}
+:root{--ink:#2C2922;--gold:#C9A84C;--gold-hi:#E5C46A;--gold-dk:#8A6D1F;--muted:#6F6355;--bg:#FBF9F4;--cream:#F5F1E7;--card:#FFFFFF;--soft:#F3EFE7;--line:#EDE7D8;--black:#0D0D0D}
 *{box-sizing:border-box}
-body{margin:0;font-family:'DM Sans',Arial,sans-serif;color:var(--navy);background:var(--ivory);line-height:1.5}
-h1,h2,h3{margin:0}
-.serif{font-family:'Playfair Display',Georgia,serif}
-.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'DM Sans',Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
+h1,h2,h3{margin:0;font-family:'Playfair Display',Georgia,serif;font-weight:600;line-height:1.12}
+h2 em,h1 em{color:var(--gold);font-style:italic}
+p{margin:0}
 a{color:inherit}
-.btn{display:inline-block;white-space:nowrap;text-decoration:none;font-weight:700;font-size:18px;padding:16px 28px;border-radius:999px;min-height:44px}
-.btn-gold{background:var(--gold);color:var(--navy)}
-.btn-gold:hover{background:#E0BE6E}
-.btn-ghost{border:1px solid var(--muted-dark);color:var(--ivory)}
-.btn-ghost:hover{border-color:var(--ivory)}
-.dark{background:var(--navy);color:var(--ivory)}
-.white{background:#FBF9F4}
-section{padding:88px 0}
-.eyebrow{font-size:15px;font-weight:700;letter-spacing:2px;text-transform:uppercase}
-.dark .eyebrow{color:var(--gold)}
-h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2rem,4vw,2.6rem);line-height:1.12}
-.grid{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
-.card{background:#fff;border-radius:20px;padding:30px}
-.dark .card{background:var(--navy2)}
-.muted{color:var(--ink2)}
-.dark .muted{color:#D5DAE6}
-header nav{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;padding:20px 24px;max-width:1200px;margin:0 auto}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.eyebrow{display:block;text-align:center;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold-dk);margin-bottom:12px}
+.sec-title{text-align:center;font-size:clamp(1.9rem,3.6vw,2.6rem);margin-bottom:48px}
+section{padding:96px 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:14px 28px;border-radius:8px;font-weight:700;font-size:17px;text-decoration:none;white-space:nowrap;transition:background .15s,border-color .15s}
+.btn-gold{background:var(--gold);color:var(--ink)}
+.btn-gold:hover{background:var(--gold-hi)}
+.btn-line{background:var(--card);border:1px solid var(--line);color:var(--ink)}
+.btn-line:hover{border-color:var(--gold)}
+/* nav */
+nav{max-width:1240px;margin:0 auto;padding:22px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
-.brand span{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:26px}
-.brand b{color:var(--gold)}
-.links{display:flex;flex-wrap:wrap;align-items:center;gap:22px;font-size:16px}
-.links a{text-decoration:none;color:#D5DAE6}
-.links a:hover{color:#fff}
-.links .btn{color:var(--navy);font-size:16px;padding:12px 20px}
-.hero{display:flex;flex-wrap:wrap;gap:56px;align-items:center;padding:56px 24px 96px}
-.hero-text{flex:999 1 520px;min-width:0;display:flex;flex-direction:column;gap:26px}
-.hero h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2.4rem,6vw,3.8rem);line-height:1.05}
-.hero p{font-size:1.2rem;color:#D5DAE6;margin:0}
-.ctas{display:flex;flex-wrap:wrap;gap:14px}
-.chat{flex:1 1 340px;min-width:0;background:var(--sand);color:var(--navy);border-radius:24px;padding:22px;display:flex;flex-direction:column;gap:12px}
-.chat small{font-weight:700;color:var(--muted)}
-.msg{max-width:85%;padding:12px 16px;font-size:16px;line-height:1.4;border-radius:16px 16px 16px 4px;background:#fff}
-.msg.me{align-self:flex-end;max-width:80%;background:#D6F0C9;border-radius:16px 16px 4px 16px}
-.big{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:clamp(2.2rem,4vw,3rem);line-height:1.1}
-.step-n{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:2.2rem;color:var(--gold-dark)}
-.step h3{font-size:1.25rem;margin:6px 0}
-.step p{margin:0;color:var(--ink2)}
-.price{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:2rem}
-.price small{font-family:'DM Sans',Arial,sans-serif;font-size:1rem;font-weight:500}
-.card.feat{background:var(--navy);color:var(--ivory)}
-.card.feat .price{color:var(--gold)}
-.card.feat p{color:#D5DAE6}
-.card h3{font-size:1.35rem}
-.card p{margin:10px 0 0}
-.split{display:flex;flex-wrap:wrap;gap:48px;align-items:center}
-.split>*{min-width:0}
-.photo{flex:1 1 340px;height:320px;background:var(--line);border-radius:20px;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;font-weight:700;color:var(--muted)}
-.faq{max-width:860px}
-.faq details{border-top:1px solid var(--line);padding:18px 0}
-.faq summary{cursor:pointer;font-weight:700;font-size:1.12rem;min-height:44px;display:flex;align-items:center}
-.faq p{margin:8px 0 0;color:var(--ink2)}
-footer{border-top:1px solid #2E3753;margin-top:40px;padding-top:24px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:15px;color:var(--muted-dark)}
-.note{font-size:15px;color:var(--muted)}
-.panel{flex:1 1 340px;min-width:0;background:var(--navy2);border-radius:24px;padding:26px;display:flex;flex-direction:column;gap:14px}
-.panel small{font-weight:700;color:var(--muted-dark)}
-.kpi{background:var(--navy);border-radius:16px;padding:16px 18px;display:flex;justify-content:space-between;align-items:baseline;gap:12px}
-.kpi span{color:#D5DAE6;font-size:15px}
-.kpi b{font-family:'Playfair Display',Georgia,serif;font-size:1.6rem;color:var(--gold);white-space:nowrap}
-.tag{display:inline-block;font-size:13px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--sand);color:var(--muted);margin-top:10px}
-.pilar{background:#fff;border-radius:20px;padding:26px}
-.pilar h3{font-size:1.2rem;margin-bottom:6px}
-.pilar p{margin:0;color:var(--ink2)}
-.pilar .ind{margin-top:10px;font-size:15px;color:var(--gold-dark);font-weight:700}
-@media (max-width:640px){.links a:not(.btn){display:none}header nav{flex-wrap:nowrap}.links .btn{padding:10px 16px;font-size:15px}.brand span{font-size:22px}.hide-sm{display:none}.hero{padding-top:24px}}
-.dark .note{color:var(--muted-dark)}
+.brand span{font-family:'Playfair Display',Georgia,serif;font-weight:600;font-size:26px;letter-spacing:-.3px}
+.brand b{color:var(--gold);font-weight:600}
+.links{display:flex;align-items:center;gap:30px;font-size:16px}
+.links a:not(.btn){text-decoration:none;color:var(--ink)}
+.links a:not(.btn):hover{color:var(--gold-dk)}
+.links .btn{padding:10px 20px;min-height:44px;font-size:16px}
+/* hero */
+.hero{text-align:center;padding:56px 24px 72px}
+.pill{display:inline-block;background:#F3E9CC;color:var(--gold-dk);font-size:13px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;padding:9px 18px;border-radius:999px}
+.hero h1{font-size:clamp(2.5rem,6.2vw,4.4rem);max-width:980px;margin:26px auto 22px;line-height:1.08}
+.hero p.sub{font-size:clamp(1.05rem,2vw,1.2rem);color:var(--muted);max-width:720px;margin:0 auto 34px}
+.ctas{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+.stats{max-width:760px;margin:56px auto 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.stats div{padding:26px 16px;text-align:center}
+.stats div+div{border-left:1px solid var(--line)}
+.stats strong{display:block;font-family:'Playfair Display',Georgia,serif;font-size:2rem;font-weight:600;color:var(--gold-dk);line-height:1.1}
+.stats span{font-size:14.5px;color:var(--muted)}
+.stats-note{font-size:13.5px;color:var(--muted);margin-top:14px}
+/* marquee */
+.marquee{background:var(--black);color:#D9CFBE;overflow:hidden;white-space:nowrap;padding:18px 0;font-size:16px}
+.marquee .track{display:inline-block;animation:scroll 40s linear infinite}
+.marquee span{padding:0 18px}
+.marquee i{color:var(--gold);font-style:normal}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.marquee .track{animation:none}}
+/* problem */
+.cream{background:var(--cream)}
+.grid3{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:32px}
+.num{font-family:'Playfair Display',Georgia,serif;font-size:2rem;color:#D9CFBE;line-height:1}
+.card h3{font-family:'DM Sans',Arial,sans-serif;font-weight:700;font-size:1.12rem;margin:16px 0 8px}
+.card p{color:var(--muted);font-size:16px}
+/* duas partes */
+.duo{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.part{border-radius:20px;padding:40px;display:flex;flex-direction:column;gap:14px}
+.part.agency{background:var(--black);color:#F5F1E7}
+.part.system{background:var(--card);border:1px solid var(--line)}
+.part .tag-top{font-size:13px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase}
+.part.agency .tag-top{color:var(--gold)}
+.part.system .tag-top{color:var(--gold-dk)}
+.part h3{font-size:1.9rem}
+.part ul{margin:6px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+.part li{display:flex;gap:10px;align-items:flex-start;font-size:16.5px}
+.part.agency li{color:#D9CFBE}
+.part li svg{flex-shrink:0;margin-top:5px}
+.duo-foot{text-align:center;color:var(--muted);margin-top:28px;font-size:16.5px}
+/* method */
+.steps{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:32px;position:relative}
+.step .when{display:inline-block;font-size:13px;font-weight:700;color:var(--gold-dk);background:#F3E9CC;padding:4px 10px;border-radius:999px;margin-top:14px}
+/* processos */
+.row{display:grid;gap:56px;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));align-items:center;padding:40px 0}
+.row+.row{border-top:1px solid var(--line)}
+.row h3{font-size:1.75rem;margin-bottom:10px}
+.row p{color:var(--muted);font-size:16.5px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chips span{background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:6px 12px;font-size:14px;font-weight:700}
+.chips .soon{background:#F3E9CC;border-color:#F3E9CC;color:var(--gold-dk)}
+.who{font-size:14px;color:var(--muted);margin-top:14px}
+.who b{color:var(--ink)}
+.mock{background:var(--soft);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:10px;font-size:14.5px}
+.mock .bar{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;justify-content:space-between;gap:12px}
+.mock .bar b{font-family:'Playfair Display',Georgia,serif;font-weight:600}
+.mock .lbl{font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted)}
+.ok{color:#2F6B3B;font-weight:700}
+.warn{color:#9A4B12;font-weight:700}
+.bars{display:flex;align-items:flex-end;gap:8px;height:120px;padding:8px 4px 0}
+.bars div{flex:1;background:var(--gold);border-radius:6px 6px 0 0}
+.msg{max-width:85%;padding:10px 14px;border-radius:14px 14px 14px 4px;background:var(--card);border:1px solid var(--line)}
+.msg.me{align-self:flex-end;background:#E4F1DA;border-color:#E4F1DA;border-radius:14px 14px 4px 14px}
+/* case */
+.dark{background:var(--black);color:#F5F1E7}
+.case{display:grid;gap:48px;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));align-items:center}
+.case h2{font-size:clamp(1.8rem,3.4vw,2.4rem);margin:10px 0 16px}
+.case p{color:#D9CFBE}
+.case .eyebrow{text-align:left;color:var(--gold)}
+.kpis{display:grid;gap:14px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.kpi{background:#1A1916;border:1px solid #2C2922;border-radius:14px;padding:22px}
+.kpi strong{display:block;font-family:'Playfair Display',Georgia,serif;font-size:1.9rem;font-weight:600;color:var(--gold);line-height:1.15}
+.kpi span{font-size:14.5px;color:#D9CFBE}
+.quote{grid-column:1/-1;border-left:3px solid var(--gold);padding:6px 0 6px 18px;font-family:'Playfair Display',Georgia,serif;font-size:1.25rem;color:#F5F1E7}
+/* pacotes */
+.plans{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));align-items:stretch}
+.plan{background:#F7F5F0;color:var(--ink);border-radius:16px;border-top:4px solid var(--gold);padding:30px;display:flex;flex-direction:column;gap:12px;position:relative}
+.plan.pop{box-shadow:0 0 0 2px var(--gold),0 18px 50px rgba(201,168,76,.25)}
+.plan .badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;background:var(--ink);color:var(--gold-hi);font-size:12px;font-weight:700;letter-spacing:1px;padding:5px 10px;border-radius:999px}
+.plan h3{font-size:1.5rem}
+.plan .sub{font-size:14.5px;color:var(--muted);margin-top:-6px}
+.plan .price{font-family:'Playfair Display',Georgia,serif;font-size:2.4rem;font-weight:600;line-height:1}
+.plan .price small{font-family:'DM Sans',Arial,sans-serif;font-size:15px;font-weight:500;color:var(--muted)}
+.plan .setup{font-size:13.5px;color:var(--muted)}
+.plan ul{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:15px}
+.plan li{display:flex;gap:9px}
+.plan li svg{flex-shrink:0;margin-top:5px}
+.plan .btn{margin-top:auto;white-space:normal;text-align:center;font-size:15.5px;padding:12px 14px}
+.plans-note{text-align:center;color:#B9AE9C;font-size:14.5px;margin-top:26px}
+/* faq */
+.faq{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq details{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:0 22px}
+.faq summary{list-style:none;cursor:pointer;font-weight:700;min-height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:26px;color:var(--gold);font-weight:400}
+.faq details[open] summary::after{content:"×"}
+.faq p{color:var(--muted);padding-bottom:20px}
+/* cta */
+.cta{background:var(--black);border-top:4px solid var(--gold);color:#F5F1E7;text-align:center}
+.cta h2{font-size:clamp(2rem,4.4vw,2.9rem);max-width:820px;margin:0 auto 14px}
+.cta p{color:#B9AE9C;margin-bottom:30px}
+footer{background:var(--black);color:#9B8A7A;font-size:14.5px;border-top:1px solid #2C2922}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding:24px}
+@media (max-width:760px){
+  .links a:not(.btn){display:none}
+  .stats{grid-template-columns:1fr}
+  .stats div+div{border-left:none;border-top:1px solid var(--line)}
+  section{padding:72px 0}
+  .hide-sm{display:none}
+}
 </style>
 </head>
 <body>
 
-<div class="dark">
 <header>
 <nav aria-label="Principal">
-<a class="brand" href="#topo" id="topo">
-<svg width="40" height="40" viewBox="-8 -8 116 116" aria-hidden="true"><path d="M4 2 L96 96 M3 33 V98 M3 33 L34 64 M97 2 V62 M97 2 L63 33" fill="none" stroke="#D4AF5A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<a class="brand" href="#topo" id="topo" aria-label="MarmorarIA, início">
+<svg width="34" height="34" viewBox="-8 -8 116 116" aria-hidden="true"><path d="M4 2 L96 96 M3 33 V98 M3 33 L34 64 M97 2 V62 M97 2 L63 33" fill="none" stroke="#2C2922" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>
 <span>Marmorar<b>IA</b></span>
 </a>
 <div class="links">
-<a href="#pilares">O que fazemos</a>
-<a href="#como">Como funciona</a>
+<a href="#como">Como trabalhamos</a>
+<a href="#processos">Processos</a>
 <a href="#pacotes">Pacotes</a>
-<a href="#case">Case</a>
-<a class="btn btn-gold js-wa" href="#contato"><span class="hide-sm">Falar no </span>WhatsApp</a>
+<a href="#faq">FAQ</a>
+<a class="btn btn-gold js-wa" href="#contato">Diagnóstico<span class="hide-sm"> grátis</span></a>
 </div>
 </nav>
 </header>
 
-<div class="wrap hero">
-<div class="hero-text">
-<span class="eyebrow">Agência de tecnologia para marmorarias</span>
-<h1>Sua marmoraria rodando com IA, do orçamento à instalação.</h1>
-<p>A MarmorarIA implanta inteligência artificial na operação da sua marmoraria: orçamento, produção, estoque, financeiro e atendimento. Você passa a ver quanto a equipe produz, quando a obra fica pronta e quanto entra no caixa. E a gente acompanha os resultados com você todo mês.</p>
+<main>
+<div class="hero">
+<span class="pill">Agência de IA exclusiva para marmorarias</span>
+<h1>Sua marmoraria rodando com <em>inteligência artificial</em>, do orçamento à instalação</h1>
+<p class="sub">A MarmorarIA implanta processos e IA dentro da operação da sua marmoraria. O MarmoApp, nosso sistema, sustenta tudo no dia a dia. Você acompanha os resultados com a gente todo mês.</p>
 <div class="ctas">
-<a class="btn btn-gold js-wa" href="#contato">Quero o diagnóstico gratuito</a>
-<a class="btn btn-ghost" href="#como">Ver como funciona</a>
+<a class="btn btn-gold js-wa" href="#contato">Quero o diagnóstico gratuito →</a>
+<a class="btn btn-line" href="#como">Ver como trabalhamos</a>
 </div>
+<div class="stats" role="group" aria-label="Resultados de uma marmoraria em Arujá-SP">
+<div><strong>67%</strong><span>de margem sobre material, visível por pedido</span></div>
+<div><strong>R$ 136,8 mil</strong><span>a receber, mapeados semana a semana</span></div>
+<div><strong>R$ 82 mil</strong><span>em orçamentos parados encontrados</span></div>
 </div>
-<div class="panel" role="group" aria-label="Indicadores de uma marmoraria que usa o sistema">
-<small>Painel de uma marmoraria em Arujá-SP · 03/11/2026</small>
-<div class="kpi"><span>Margem sobre material (out)</span><b>67%</b></div>
-<div class="kpi"><span>A receber até dezembro</span><b>R$ 136,8 mil</b></div>
-<div class="kpi"><span>Orçamentos parados encontrados</span><b>R$ 82 mil</b></div>
-<div class="kpi"><span>Obras sem cobrança encontradas</span><b>R$ 13 mil</b></div>
-</div>
-</div>
+<p class="stats-note">Numa marmoraria em Arujá-SP, dados do sistema em 03/11/2026.</p>
 </div>
 
-<main>
-<section id="pilares" class="white">
-<div class="wrap" style="display:flex;flex-direction:column;gap:36px">
-<h2 style="max-width:820px">Onde a IA entra na sua marmoraria</h2>
-<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">
-<div class="pilar"><h3>Orçamento</h3><p>Orçamento com a sua tabela de pedras e serviços. O Antônio monta a partir de texto ou áudio.</p><div class="ind">Tempo para orçar</div></div>
-<div class="pilar"><h3>Produção</h3><p>Fila de serviços, ficha semanal da equipe, capacidade e previsão de entrega.</p><div class="ind">Metros lineares por dia · prazo cumprido</div></div>
-<div class="pilar"><h3>Estoque e compras</h3><p>Chapas e insumos por obra, pedidos da equipe e estoque mínimo.</p><div class="ind">Material por obra · falta de insumo</div></div>
-<div class="pilar"><h3>Financeiro</h3><p>Contas a receber e a pagar, caixa semana a semana, margem por pedido e obra sem cobrança.</p><div class="ind">Caixa previsto · margem</div></div>
-<div class="pilar"><h3>Atendimento</h3><p>O Antônio no seu WhatsApp: responde na hora, faz o pré-orçamento em faixa e retoma orçamentos parados.</p><div class="ind">Orçamentos recuperados</div><span class="tag">Em implantação</span></div>
+<div class="marquee" aria-hidden="true"><div class="track">
+<span>Diagnóstico da operação</span><i>·</i><span>Orçamento com IA</span><i>·</i><span>Produção medida</span><i>·</i><span>Previsão de entrega</span><i>·</i><span>Estoque por obra</span><i>·</i><span>Caixa semana a semana</span><i>·</i><span>Margem por pedido</span><i>·</i><span>Antônio no WhatsApp</span><i>·</i><span>Indicadores todo mês</span><i>·</i>
+<span>Diagnóstico da operação</span><i>·</i><span>Orçamento com IA</span><i>·</i><span>Produção medida</span><i>·</i><span>Previsão de entrega</span><i>·</i><span>Estoque por obra</span><i>·</i><span>Caixa semana a semana</span><i>·</i><span>Margem por pedido</span><i>·</i><span>Antônio no WhatsApp</span><i>·</i><span>Indicadores todo mês</span><i>·</i>
+</div></div>
+
+<section class="cream">
+<div class="wrap">
+<span class="eyebrow">O problema</span>
+<h2 class="sec-title">A operação que vive na cabeça do dono</h2>
+<div class="grid3">
+<div class="card"><div class="num">01</div><h3>Orçamento à noite, resposta tarde</h3><p>O dono mede, corta e instala de dia e orça de noite. O cliente que pediu às 21h fecha com quem respondeu primeiro.</p></div>
+<div class="card"><div class="num">02</div><h3>Produção sem medida, prazo no olho</h3><p>Ninguém sabe quantos metros a equipe faz por dia. A data de entrega é um palpite, e o atraso vira rotina.</p></div>
+<div class="card"><div class="num">03</div><h3>Caixa no caderno</h3><p>Sem saber qual obra deu lucro, quanto entra na semana que vem e o que ficou sem cobrar.</p></div>
 </div>
 </div>
 </section>
 
 <section id="como">
-<div class="wrap" style="display:flex;flex-direction:column;gap:36px">
-<h2>Como funciona</h2>
-<div class="grid">
-<div class="step"><div class="step-n">1</div><h3>Diagnóstico da operação</h3><p>Em até 7 dias, seus orçamentos, obras e recebimentos entram no sistema. Você vê orçamentos parados, obras sem cobrança, margem por pedido e o caixa até o fim do ano. Gratuito.</p></div>
-<div class="step"><div class="step-n">2</div><h3>Implantação</h3><p>Cadastramos pedras, serviços e preços, ligamos os pilares que fazem sentido e treinamos a equipe. Leva cerca de 3 semanas.</p></div>
-<div class="step"><div class="step-n">3</div><h3>Acompanhamento mensal</h3><p>Todo mês, uma reunião curta com os indicadores: produção, prazo, margem e caixa. O que não melhora, a gente ajusta.</p></div>
+<div class="wrap">
+<span class="eyebrow">Como trabalhamos</span>
+<h2 class="sec-title">A agência implanta. <em>O sistema sustenta.</em></h2>
+<div class="duo">
+<div class="part agency">
+<span class="tag-top">A agência · MarmorarIA</span>
+<h3>Pessoas e método dentro da sua operação</h3>
+<ul>
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Diagnóstico da operação: orçamentos, produção, estoque e caixa</li>
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Desenho dos processos com o dono e a equipe</li>
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Implantação: cadastros, rotinas, IA configurada</li>
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Treinamento da equipe, do escritório ao pátio</li>
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Reunião mensal de indicadores e ajustes</li>
+</ul>
+</div>
+<div class="part system">
+<span class="tag-top">O sistema · MarmoApp</span>
+<h3>A ferramenta que segura o dia a dia</h3>
+<ul>
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8A6D1F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Orçamentos com a sua tabela de pedras e serviços</li>
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8A6D1F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Fila de serviços, ficha de produção e agenda</li>
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8A6D1F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Estoque de chapas e insumos por obra</li>
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8A6D1F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Financeiro: receber, pagar, caixa e margem por pedido</li>
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8A6D1F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Antônio, o assistente de IA que trabalha junto com a equipe</li>
+</ul>
+</div>
+</div>
+<p class="duo-foot">Você não compra um software para aprender sozinho: compra uma operação funcionando.</p>
+
+<div class="steps" style="margin-top:56px">
+<div class="step"><div class="num">01</div><h3 style="font-family:'DM Sans',Arial,sans-serif;font-weight:700;font-size:1.15rem;margin:14px 0 8px">Diagnóstico da operação</h3><p style="color:var(--muted)">Seus orçamentos, obras e recebimentos entram no sistema. Você vê orçamentos parados, obras sem cobrança, margem por pedido e o caixa até o fim do ano.</p><span class="when">Até 7 dias · gratuito</span></div>
+<div class="step"><div class="num">02</div><h3 style="font-family:'DM Sans',Arial,sans-serif;font-weight:700;font-size:1.15rem;margin:14px 0 8px">Implantação dos processos</h3><p style="color:var(--muted)">Definimos com você como orçar, produzir, comprar e cobrar. Configuramos o sistema e a IA e treinamos a equipe.</p><span class="when">Cerca de 3 semanas</span></div>
+<div class="step"><div class="num">03</div><h3 style="font-family:'DM Sans',Arial,sans-serif;font-weight:700;font-size:1.15rem;margin:14px 0 8px">Acompanhamento mensal</h3><p style="color:var(--muted)">Uma reunião curta por mês com produção, prazo, margem e caixa. O que não melhorou, a gente ajusta.</p><span class="when">Todo mês</span></div>
 </div>
 </div>
 </section>
 
-<section id="pacotes">
-<div class="wrap" style="display:flex;flex-direction:column;gap:36px">
-<h2>Pacotes</h2>
-<div class="grid">
-<div class="card"><h3>Diagnóstico da operação</h3><div class="price">Gratuito</div><p class="muted">Orçamentos parados, obras sem cobrança, margem por pedido e caixa até o fim do ano.</p></div>
-<div class="card"><h3>Gestão com IA</h3><div class="price">R$ 297<small>/mês</small></div><p class="muted">Sistema completo em orçamento, produção, estoque e financeiro, com treinamento da equipe. Implantação R$ 490.</p></div>
-<div class="card feat"><h3>Operação com IA</h3><div class="price">R$ 790<small>/mês</small></div><p>Gestão com IA + Antônio no seu WhatsApp + reunião mensal de indicadores (produção, prazo, margem e caixa). Implantação R$ 990.</p></div>
-<div class="card"><h3>Operação + Crescimento</h3><div class="price">R$ 1.490<small>/mês</small></div><p class="muted">Operação com IA + anúncios na sua região, regulados pela capacidade da produção, + R$ 60 por medição realizada + exclusividade na cidade. Implantação R$ 1.990; verba de anúncio à parte.</p></div>
+<section id="processos" class="cream">
+<div class="wrap">
+<span class="eyebrow">Processos que implantamos</span>
+<h2 class="sec-title">Onde a IA entra, <em>processo por processo</em></h2>
+
+<div class="row">
+<div>
+<h3>Orçamento em minutos, com a sua tabela</h3>
+<p>Definimos como a marmoraria orça e cadastramos pedras, serviços e preços. O Antônio monta o orçamento a partir de texto ou áudio, com a margem visível antes de enviar.</p>
+<div class="chips"><span>Tabela da marmoraria</span><span>IA por texto e áudio</span><span>Margem por pedido</span></div>
+<p class="who"><b>Agência:</b> padroniza tabela e acabamentos · <b>Sistema:</b> calcula e gera o orçamento</p>
+</div>
+<div class="mock" role="img" aria-label="Exemplo de orçamento montado pelo Antônio">
+<span class="lbl">Antônio · orçamento</span>
+<div class="msg me">Pia 2,50 × 0,60 em Verde Ubatuba, com cuba e instalação</div>
+<div class="msg">Pronto: material, acabamento e instalação calculados com a tabela da marmoraria. Margem do pedido visível antes de enviar.</div>
+</div>
+</div>
+
+<div class="row">
+<div class="mock" role="img" aria-label="Exemplo de painel de produção">
+<span class="lbl">Produção · semana</span>
+<div class="bar"><span>Metros lineares acabados</span><span>por pessoa e por dia</span></div>
+<div class="bar"><span>Capacidade da equipe</span><span>calculada pelos apontamentos</span></div>
+<div class="bar"><span>Obras na fila</span><span>Corte · Acabamento · Instalação</span></div>
+</div>
+<div>
+<h3>Produção medida, prazo que se cumpre</h3>
+<p>A equipe anota a produção na ficha semanal ou pelo celular. O sistema mostra quanto cada etapa produz, qual é o gargalo e quando a obra fica pronta.</p>
+<div class="chips"><span>Fila de serviços</span><span>Ficha de produção</span><span>Previsão de entrega</span></div>
+<p class="who"><b>Agência:</b> implanta a rotina de apontamento · <b>Sistema:</b> calcula capacidade e prazo</p>
+</div>
+</div>
+
+<div class="row">
+<div>
+<h3>Estoque e compras ligados às obras</h3>
+<p>Chapas e insumos registrados por obra, pedidos da equipe no sistema e alerta de estoque mínimo. Compra feita na hora certa, sem parar a produção.</p>
+<div class="chips"><span>Material por obra</span><span>Pedidos da equipe</span><span>Estoque mínimo</span></div>
+<p class="who"><b>Agência:</b> organiza o almoxarifado e o fluxo de pedido · <b>Sistema:</b> controla e avisa</p>
+</div>
+<div class="mock" role="img" aria-label="Exemplo de controle de estoque">
+<span class="lbl">Estoque · insumos</span>
+<div class="bar"><span>Disco de corte</span><span class="warn">Abaixo do mínimo</span></div>
+<div class="bar"><span>Resina para acabamento</span><span class="ok">Ok</span></div>
+<div class="bar"><span>Chapa reservada para obra</span><span>Preto São Gabriel</span></div>
+</div>
+</div>
+
+<div class="row">
+<div class="mock" role="img" aria-label="Exemplo de previsão de caixa por semana">
+<span class="lbl">Caixa · entradas previstas por semana</span>
+<div class="bars"><div style="height:66%"></div><div style="height:46%"></div><div style="height:100%"></div><div style="height:60%"></div><div style="height:50%"></div><div style="height:50%"></div><div style="height:50%"></div><div style="height:50%"></div><div style="height:46%"></div></div>
+<div class="bar"><span>A receber até dezembro</span><b>R$ 136,8 mil</b></div>
+</div>
+<div>
+<h3>Caixa previsto e margem por pedido</h3>
+<p>Entrada e saldo lançados no fechamento, contas a pagar no mesmo lugar e o caixa das próximas semanas na tela. Obra finalizada sem cobrança vira alerta.</p>
+<div class="chips"><span>Receber e pagar</span><span>Caixa semanal</span><span>Obra sem cobrança</span></div>
+<p class="who"><b>Agência:</b> organiza a rotina financeira · <b>Sistema:</b> projeta o caixa e aponta o que falta</p>
+</div>
+</div>
+
+<div class="row">
+<div>
+<h3>Atendimento e follow-up no WhatsApp</h3>
+<p>O Antônio responde o cliente na hora, pede foto e medida, faz o pré-orçamento em faixa e marca a medição. Orçamentos sem resposta são retomados em 2, 7, 15 e 30 dias, sem falar de pagamento.</p>
+<div class="chips"><span>Resposta na hora</span><span>Pré-orçamento em faixa</span><span>Follow-up</span><span class="soon">Em implantação</span></div>
+<p class="who"><b>Agência:</b> ajusta o roteiro ao jeito da marmoraria · <b>Sistema:</b> atende e registra tudo</p>
+</div>
+<div class="mock" role="img" aria-label="Exemplo de conversa do Antônio no WhatsApp">
+<span class="lbl">WhatsApp · Antônio</span>
+<div class="msg me">Boa noite, quanto fica uma pia de 2,5 m?</div>
+<div class="msg">Oi! Sou o Antônio, assistente virtual da marmoraria. Me manda uma foto do local e a profundidade?</div>
+<div class="msg">Em Verde Ubatuba, com cuba e instalação, fica entre <b>R$ 2.000 e R$ 2.400</b>. O valor final sai na medição.</div>
+</div>
 </div>
 </div>
 </section>
 
-<section id="case" class="dark">
-<div class="wrap split">
-<div style="flex:1 1 440px;display:flex;flex-direction:column;gap:18px">
+<section class="dark" id="case">
+<div class="wrap case">
+<div>
 <span class="eyebrow">Case · marmoraria em Arujá-SP</span>
-<h2>Três meses de sistema. O dono passou a ver o que antes ficava no caderno.</h2>
-<p class="muted" style="font-size:18px;margin:0">84 orçamentos e R$ 236 mil orçados passaram pelo sistema, com a produção apontada por funcionário e o financeiro ligado às obras. Margem por pedido, orçamentos parados, obras sem cobrança e o caixa até dezembro apareceram em um só painel.</p>
+<h2>Três meses de sistema. O dono passou a ver a operação.</h2>
+<p>84 orçamentos e R$ 236 mil orçados passaram pelo sistema, com a produção apontada por funcionário e o financeiro ligado às obras.</p>
 </div>
-<div class="card" style="flex:1 1 380px">
-<p class="serif" style="font-size:1.5rem;line-height:1.4;margin:0">“Depoimento do dono da marmoraria em breve.”</p>
-</div>
-</div>
-</section>
-
-<section>
-<div class="wrap split">
-<div class="photo">Foto do pátio da marmoraria em breve</div>
-<div style="flex:999 1 480px;display:flex;flex-direction:column;gap:14px">
-<h2>Uma família no mármore desde 1972.</h2>
-<p class="muted" style="font-size:18px;margin:0">O Antônio trabalhou com mármore a vida inteira. O nosso assistente de IA leva o nome dele, e a tecnologia da MarmorarIA nasceu dentro de uma marmoraria de verdade, para resolver os problemas que a gente vive no pátio.</p>
+<div class="kpis">
+<div class="kpi"><strong>67%</strong><span>margem sobre material em outubro</span></div>
+<div class="kpi"><strong>R$ 136,8 mil</strong><span>a receber até dezembro, semana a semana</span></div>
+<div class="kpi"><strong>R$ 82 mil</strong><span>em orçamentos parados encontrados</span></div>
+<div class="kpi"><strong>R$ 13 mil</strong><span>em obras sem cobrança encontradas</span></div>
+<p class="quote">“Depoimento do dono da marmoraria em breve.”</p>
 </div>
 </div>
 </section>
 
-<section class="white">
-<div class="wrap"><div class="faq">
-<h2 style="margin-bottom:20px">Perguntas frequentes</h2>
-<details><summary>Preciso trocar de sistema ou aprender tudo sozinho?</summary><p>Não. A implantação é feita por nós: cadastramos pedras, serviços e preços e treinamos a equipe. Você começa usando o que faz sentido para a sua marmoraria.</p></details>
+<section class="dark" id="pacotes" style="padding-top:24px">
+<div class="wrap">
+<span class="eyebrow" style="color:var(--gold)">Pacotes</span>
+<h2 class="sec-title" style="color:#F5F1E7">Escolha até onde a IA entra na sua marmoraria</h2>
+<div class="plans">
+<div class="plan">
+<h3>Diagnóstico</h3><p class="sub">da operação</p>
+<div class="price">Grátis</div>
+<p class="setup">Em até 7 dias</p>
+<ul>
+<li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A6D1F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Orçamentos parados</li>
+<li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A6D1F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Obras sem cobrança</li>
+<li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A6D1F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Margem por pedido</li>
+<li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A6D1F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Caixa até o fim do ano</li>
+</ul>
+<a class="btn btn-line js-wa" href="#contato">Quero o diagnóstico</a>
+</div>
+<div class="plan">
+<h3>Gestão com IA</h3><p class="sub">Sistema implantado</p>
+<div class="price">R$ 297<small> /mês</small></div>
+<p class="setup">Implantação R$ 490</p>
+<ul>
+<li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A6D1F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Orçamento, produção, estoque e financeiro</li>
+<li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A6D1F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Cadastro de pedras, serviços e preços</li>
+<li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A6D1F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Treinamento da equipe</li>
+<li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A6D1F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Antônio para orçar por texto e áudio</li>
+</ul>
+<a class="btn btn-line js-wa" href="#contato">Falar com a gente</a>
+</div>
+<div class="plan pop">
+<span class="badge">MAIS INDICADO</span>
+<h3>Operação com IA</h3><p class="sub">Agência + sistema</p>
+<div class="price">R$ 790<small> /mês</small></div>
+<p class="setup">Implantação R$ 990</p>
+<ul>
+<li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A6D1F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Tudo do Gestão com IA</li>
+<li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A6D1F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Processos desenhados com você</li>
+<li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A6D1F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Antônio no WhatsApp e follow-up</li>
+<li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A6D1F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Reunião mensal de indicadores</li>
+</ul>
+<a class="btn btn-gold js-wa" href="#contato">Começar pelo diagnóstico</a>
+</div>
+<div class="plan">
+<h3>Operação + Crescimento</h3><p class="sub">Com anúncios na região</p>
+<div class="price">R$ 1.490<small> /mês</small></div>
+<p class="setup">Implantação R$ 1.990 · + R$ 60 por medição realizada</p>
+<ul>
+<li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A6D1F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Tudo do Operação com IA</li>
+<li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A6D1F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Anúncios regulados pela capacidade</li>
+<li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A6D1F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Medição agendada pela IA</li>
+<li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A6D1F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Exclusividade na cidade</li>
+</ul>
+<a class="btn btn-line js-wa" href="#contato">Falar com a gente</a>
+</div>
+</div>
+<p class="plans-note">Verba de anúncio paga direto ao Meta/Google. Fidelidade de 3 meses nos dois pacotes da agência.</p>
+</div>
+</section>
+
+<section id="faq">
+<div class="wrap">
+<span class="eyebrow">Dúvidas frequentes</span>
+<h2 class="sec-title">Perguntas frequentes</h2>
+<div class="faq">
+<details open><summary>Qual a diferença entre a MarmorarIA e o MarmoApp?</summary><p>O MarmoApp é o sistema. A MarmorarIA é a agência que implanta os processos e a IA na sua marmoraria usando o MarmoApp, treina a equipe e acompanha os resultados com você todo mês.</p></details>
+<details><summary>Preciso trocar de sistema ou aprender tudo sozinho?</summary><p>Não. A implantação é feita por nós: cadastramos pedras, serviços e preços, definimos as rotinas com você e treinamos a equipe.</p></details>
 <details><summary>Quanto tempo leva a implantação?</summary><p>Cerca de 3 semanas depois do diagnóstico. O acompanhamento de indicadores começa no primeiro mês.</p></details>
 <details><summary>A equipe da produção vai conseguir usar?</summary><p>Sim. A produção pode ser anotada na ficha semanal de papel e lançada no sistema, ou direto pelo celular. A gente adapta ao jeito da sua equipe.</p></details>
 <details><summary>O Antônio substitui meu vendedor?</summary><p>Não. Ele responde na hora, coleta foto e medida e faz o pré-orçamento em faixa. Negociação e fechamento continuam com você.</p></details>
-<details><summary>Tem fidelidade?</summary><p>Três meses no Recupera e no Acelera. Depois, mês a mês.</p></details>
-</div></div>
+<details><summary>Tem fidelidade?</summary><p>Três meses no Operação com IA e no Operação + Crescimento. Depois, mês a mês. O Gestão com IA não tem fidelidade.</p></details>
+</div>
+</div>
 </section>
 </main>
 
-<div class="dark" id="contato">
+<div class="cta" id="contato">
 <section>
-<div class="wrap" style="display:flex;flex-direction:column;align-items:flex-start;gap:24px">
-<h2 style="max-width:760px;font-size:clamp(2rem,4.5vw,2.8rem)">Descubra quanto dinheiro está parado na sua marmoraria.</h2>
-<a class="btn btn-gold js-wa" href="#contato">Quero o diagnóstico gratuito</a>
-<footer style="width:100%">
-<span>MarmorarIA é uma marca do ecossistema MarmoApp</span>
-<span>Arujá-SP</span>
-</footer>
+<div class="wrap">
+<h2>Sua marmoraria merece uma operação à altura do que ela entrega</h2>
+<p>Comece pelo diagnóstico gratuito da operação. Sem compromisso.</p>
+<a class="btn btn-gold js-wa" href="#contato">Quero o diagnóstico gratuito →</a>
 </div>
 </section>
 </div>
+<footer>
+<div class="wrap">
+<span>MarmorarIA é uma marca do ecossistema MarmoApp</span>
+<span>Arujá-SP · Uma família no mármore desde 1972</span>
+</div>
+</footer>
 
 <script>
-// Número do WhatsApp da MarmorarIA, só dígitos com DDI e DDD (ex.: 5511999999999).
-// Enquanto estiver vazio, os botões levam para a seção de contato.
+// Número do WhatsApp da MarmorarIA, só dígitos com DDI e DDD.
 var WHATSAPP = "5511947340955";
 (function () {
   if (!WHATSAPP) return;
   var params = new URLSearchParams(location.search);
   var origem = ["utm_source", "utm_campaign", "utm_content"].map(function (k) { return params.get(k); }).filter(Boolean).join(" / ");
-  var texto = "Quero o diagnóstico da minha marmoraria" + (origem ? " (" + origem + ")" : "");
+  var texto = "Quero o diagnóstico da operação da minha marmoraria" + (origem ? " (" + origem + ")" : "");
   var link = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(texto);
   document.querySelectorAll(".js-wa").forEach(function (a) { a.href = link; a.target = "_blank"; a.rel = "noopener"; });
 })();
